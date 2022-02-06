@@ -17,7 +17,7 @@ app.use((req, res, next) => {
 });
 
 // Routes
-app.use('/products', productsRoutes);
+app.use('api/products', productsRoutes);
 
 app.use((err, req, res, next) => {
   res.status(err.status || 500).json({
