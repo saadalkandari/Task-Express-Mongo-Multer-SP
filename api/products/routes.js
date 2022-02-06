@@ -5,6 +5,7 @@ const {
   productCreate,
   productDelete,
   fetchProduct,
+  productUpdate,
 } = require('./controllers');
 
 const router = express.Router();
