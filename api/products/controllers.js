@@ -18,17 +18,17 @@ exports.getProducts = async (req, res, next) => {
   }
 };
 
-exports.productCreate = async (req, res, next) => {
-  try {
-    if (req.file) {
-      req.body.image = `${req.protocol}://${req.get("host")}/${req.file.path}`;
-    }
-    const newProduct = await Product.create(req.body);
-    return res.status(201).json(newProduct);
-  } catch (error) {
-    next(error);
-  }
-};
+// exports.productCreate = async (req, res, next) => {
+//   try {
+//     if (req.file) {
+//       req.body.image = `${req.protocol}://${req.get("host")}/${req.file.path}`;
+//     }
+//     const newProduct = await Product.create(req.body);
+//     return res.status(201).json(newProduct);
+//   } catch (error) {
+//     next(error);
+//   }
+// };
 
 exports.productDelete = async (req, res, next) => {
   try {
@@ -38,6 +38,20 @@ exports.productDelete = async (req, res, next) => {
     next(error);
   }
 };
+// exports.productCreate = async (req, res, next) => {
+//   try {
+//     if (req.file) {
+//       req.body.image = `${req.protocol}://${req.get("host")}/${req.file.path}`;
+//     }
+//     //const {shopId} = req.param;
+//     //req.body.shop = shopId;
+//     const newProduct = await Product.create(req.body);
+//     //await Shop.findByIdAndUpdate(shopId, {_id: req.shopId}, {$push:{products:newProducts._id}})
+//     return res.status(201).json(newProduct);
+//   } catch (error) {
+//     next(error);
+//   }
+// };
 
 exports.productUpdate = async (req, res, next) => {
   try {

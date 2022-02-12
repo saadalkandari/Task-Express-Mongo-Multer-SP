@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { Schema, model } = require("mongoose");
 const mongooseSlugPlugin = require("mongoose-slug-plugin");
 const ProductSchema = new mongoose.Schema(
   {
@@ -11,6 +12,7 @@ const ProductSchema = new mongoose.Schema(
     },
     image: String,
     quantity: Number,
+    shop: { type: mongoose.Schema.Types.ObjectId, ref: "Shop" },
   },
   { timestamps: true }
 );
