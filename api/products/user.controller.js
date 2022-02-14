@@ -11,7 +11,7 @@ exports.signup = async (req, res, next) => {
     const newUser = await User.create(req.body);
 
     const payload = {
-      _id: newUser._id,
+      id: newUser._id,
       username: newUser.username,
       exp: Date.now() + JWT_EXPRIRATION_MS,
     };
@@ -20,4 +20,14 @@ exports.signup = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
+};
+exports.signin = (req, res) => {
+  const user = req.user;
+  const payload = {
+    id: user._id,
+    username: user.username,
+    exp: Date.now() + JWT_EXPRIRATION_MS,
+  };
+  const token = jwt.sign(JSON.stringify(payload), JWT_SECRET);
+  res.status(201).json({ token });
 };
